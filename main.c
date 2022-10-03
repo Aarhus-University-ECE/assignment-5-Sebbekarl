@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include<malloc.h>
+#include <assert.h>
 #include "circle.h"
 #include"jollyjumper.h"
 
@@ -19,15 +20,21 @@ int main(void) {
 	p.y = 2;
 	translate(&c[1], &p);
 	printCircle(c[1]);
-	printf("isValid: %d", circleIsValid(&c[1]));
+	printf("isValid: %d \n", circleIsValid(&c[1]));
 
-	/*answer to exercise 7.b*/
+
 	int n; /*number of numbers to read*/
-	/*readin n and check that is is OK*/
+	printf("number of element in the list: ");
+	scanf("%d", &n); //defines the size of the array
+	assert(n > 0);  //checks that the size of the array is larger than 0
 
 	int *numbers = malloc(sizeof(int) * n); /*the numbers read*/
 
-	/*readin the n numbers in the array numbers*/
+	// takes the input and put them in an array
+	printf("input the number in the list separated by spaces: \n");
+	for(int i = 0; i<n;i++){
+		scanf("%d", &numbers[i]);
+	}
 
 	if (isJollyJumber(numbers, n)) {
 		printf("it is a Jolly Jumper");}
